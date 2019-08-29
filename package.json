@@ -1,7 +1,14 @@
 {
   "name": "vuex-angular",
+  "description": "Vuex-like state management for Angular apps",
   "version": "0.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timsim00/vuex-angular"
+  },
+  "author": "Drew Simmons",
+  "license": "ISC",
   "dependencies": {
     "@angular-extensions/model": "^7.1.2",
     "@angular/cli": "^7.0.0",
