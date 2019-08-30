@@ -7,7 +7,7 @@ import { initialState } from './initState';
 
 export default {
   [actions.ADD_TODO]({model, root, state}, name: string) {
-    const newTodo = { 
+    const newTodo = {
       id: ++ID,
       name,
       done: false
@@ -23,16 +23,17 @@ export default {
   },
 
   [actions.TOGGLE_TODO]({model, state, root}, id: number) {
-    const todo = state.find(todo => todo.id === id);
-    todo.done = !todo.done;
     // show how to use other slice of state in todo slice logic:
     let { someAttr } = root.other.model._data.value;
     if (someAttr < 7) {
+      const todo = state.find(todo => todo.id === id);
+      todo.done = !todo.done;
+
       model.set(state);
     }
   },
 
-  [actions.RESET_TODOS]({model}) { 
+  [actions.RESET_TODOS]({model}) {
     model.set(initialState());
   }
 }

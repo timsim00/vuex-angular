@@ -1,4 +1,8 @@
 <h1>Angular Model</h1>
 <h2>The @angular-extension/model example</h2>
 <br>
+<ng-container *ngIf="otherService.other$ | async as other">
+  Other Attr: {{other.someAttr}}
+</ng-container>
+<br>
 <my-todo></my-todo>
