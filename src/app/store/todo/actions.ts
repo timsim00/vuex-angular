@@ -17,7 +17,7 @@ export default {
     commit(actions.TOGGLE_TODO, id);
   },
 
-  [actions.RESET_TODOS]({commit, model}) {
+  [actions.RESET_TODOS]({commit}) {
     commit(actions.RESET_TODOS);
   }   
 }

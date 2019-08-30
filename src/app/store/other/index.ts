@@ -2,28 +2,28 @@ import { Injectable } from '@angular/core';
 import { Model, ModelFactory } from '@angular-extensions/model';
 import { Observable } from 'rxjs';
 
-import TodoActions from './actions'
-import TodoMutations from './mutations';
+import OtherActions from './actions'
+import OtherMutations from './mutations';
 
-import { ITodo } from './todoInterface';
+import { IOther } from './otherInterface';
 
 import { initialState } from './initState';
-const initialData: ITodo[] = initialState();
+const initialData: IOther = initialState();
 
 @Injectable({
   providedIn: 'root'
 })
-export class TodoService {
-  public model: Model<ITodo[]>;
-  todos$: Observable<ITodo[]>;
-  public actions: TodoActions;
-  public mutations: TodoMutations;
+export class OtherService {
+  public model: Model<IOther>;
+  other$: Observable<IOther>;
+  public actions: OtherActions;
+  public mutations: OtherMutations;
 
-  constructor(private modelFactory: ModelFactory<ITodo[]>) {
+  constructor(private modelFactory: ModelFactory<IOther>) {
     this.model = this.modelFactory.create(initialData);
-    this.todos$ = this.model.data$;
-    this.actions = TodoActions;
-    this.mutations = TodoMutations;
+    this.other$ = this.model.data$;
+    this.actions = OtherActions;
+    this.mutations = OtherMutations;
   }
 
   // leaving these here if you really want to dispatch/commit from the model instead of the store root:

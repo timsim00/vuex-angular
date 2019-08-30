@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 // import { TodoService } from './todo.service';
 import { TodoService } from '../store/todo';
-import constList from '../store/constants';
-let actions = constList.todo;
+import allActions from '../store/constants';
+let todo = allActions.todo;
 import { Store } from '../store';
 
 @Component({
@@ -26,6 +26,15 @@ import { Store } from '../store';
         </button>
       </div>
       <p>Click on todo to toggle its state</p> 
+      <button (click)="resetTodoList();">
+          Reset Todos
+      </button>
+      <button (click)="otherAction();" style="float:right">
+          Other Action
+      </button> 
+      <button (click)="resetOther();" style="float:right">
+          Reset Other
+      </button>           
     </ng-container>
   `,
   styleUrls: ['./todo.component.css']
@@ -40,17 +49,29 @@ export class TodoComponent {
   addTodo(name: string) {
     if (name.length) {
       // this.todoService.dispatch(actions.ADD_TODO, name);
-      this.store.dispatch(actions.ADD_TODO, name);
+      this.store.dispatch(todo.ADD_TODO, name);
     }
   }
 
   removeTodo(id: number) {
     // this.todoService.dispatch(actions.REMOVE_TODO, id);
-    this.store.dispatch(actions.REMOVE_TODO, id);
+    this.store.dispatch(todo.REMOVE_TODO, id);
   }
 
   toggleTodo(id: number) {
     // this.todoService.dispatch(actions.TOGGLE_TODO, id);
-    this.store.dispatch(actions.TOGGLE_TODO, id);
+    this.store.dispatch(todo.TOGGLE_TODO, id);
   }
+
+  resetTodoList() {
+    this.store.dispatch(todo.RESET_TODOS);
+  }
+
+  otherAction() {
+    this.store.dispatch(allActions.other.SOME_ACTION);
+  }  
+
+  resetOther() {
+    this.store.dispatch(allActions.other.RESET_OTHER);
+  }  
 }

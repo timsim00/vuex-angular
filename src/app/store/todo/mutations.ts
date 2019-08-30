@@ -3,38 +3,36 @@ let ID = 2;
 
 import constList from '../constants'
 let actions = constList.todo;
+import { initialState } from './initState';
 
 export default {
   [actions.ADD_TODO]({model, root, state}, name: string) {
-    const todos = model.get();
-    // if (root.otherSlice.myAttr === 3) {
-    // }
     const newTodo = { 
       id: ++ID,
       name,
       done: false
     }
-    todos.push(newTodo);
+    state.push(newTodo);
 
-    model.set(todos);
+    model.set(state);
   },
 
-  [actions.REMOVE_TODO]({model}, id: number) {
-    const todos = model.get();
-    todos.splice(todos.findIndex(todo => todo.id === id), 1);
-    model.set(todos);
+  [actions.REMOVE_TODO]({model, state}, id: number) {
+    state.splice(state.findIndex(todo => todo.id === id), 1);
+    model.set(state);
   },
 
-  [actions.TOGGLE_TODO]({model}, id: number) {
-    const todos = model.get();
- 
-    const todo = todos.find(todo => todo.id === id);
+  [actions.TOGGLE_TODO]({model, state, root}, id: number) {
+    const todo = state.find(todo => todo.id === id);
     todo.done = !todo.done;
- 
-    model.set(todos);
+    // show how to use other slice of state in todo slice logic:
+    let { someAttr } = root.other.model._data.value;
+    if (someAttr < 7) {
+      model.set(state);
+    }
   },
 
   [actions.RESET_TODOS]({model}) { 
-    // model.set(todos);
+    model.set(initialState());
   }
 }

@@ -1,4 +1,9 @@
+Love Vuex but have to use Angular?  Need a state management framework that is easy to reason about?
+
 This repo shows how the [Angular Model Extension](https://tomastrajan.github.io/angular-model-pattern-example#/about) Todo example can be turned into a Vuex-like state management pattern.
 
-As is, it gets you most of the way there, with only a few things yet to finish up.
+Please [ping me](https://drew-simmons.grapedrop.com/) and let me know how you are using this and/or how it can be improved.
+
+Thanks!
+Drew
 
